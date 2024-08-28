@@ -168,3 +168,18 @@
   font-weight: 600;
   font-size: 1rem;
 }
+
+/* HeroPlans.css */
+
+.rabbitear,
+.rabbitflower {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.5s ease-in-out;
+}
+
+.animate .rabbitear,
+.animate .rabbitflower {
+  opacity: 1;
+  transform: translateY(0);
+}

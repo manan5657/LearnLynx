@@ -69,3 +69,16 @@
 .footer-td {
   margin-bottom: 1rem;
 }
+
+/* Initial state of the footer */
+.footer {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.5s ease-in-out;
+}
+
+/* Animation state when in view */
+.animate-footer {
+  opacity: 1;
+  transform: translateY(0px);
+}
