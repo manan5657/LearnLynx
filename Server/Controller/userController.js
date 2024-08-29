@@ -61,10 +61,13 @@ module.exports.loginIn = async (req, res) => {
     const { email, password } = req.body;
 
     if (!(email && password)) {
-      return res.status(400).send('Please Fill All Details');
+      return res.json(new ExpressError(400, 'Please Enter All Details'));
     }
 
     const user = await User.findOne({ email });
+    if(!user){
+      return res.json(new ExpressError(400, 'User is not Registerd'));
+    }
     if (user && await bcrypt.compare(password, user.password)) {
       const token = jwt.sign(
         { id: user._id },
@@ -87,9 +90,11 @@ module.exports.loginIn = async (req, res) => {
       });
     }
 
-    return res.status(400).send('Enter Correct Credentials');
+    return res.json(new ExpressError(400, 'Username or Password are incorrect'));
   } catch (error) {
     console.error(error);
-    return res.status(500).send("Something Went Wrong");
+    return res.json(new ExpressError(400, error));
   }
 };
+
+
