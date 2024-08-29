@@ -37,12 +37,6 @@ module.exports.signUp = async (req, res,next) => {
   
       user.token = token;
       user.password = undefined;
-  
-    //   return res.json({
-    //     success: true,
-    //     user,
-    //     token
-    //   });
       next();
     } catch (error) {
   
@@ -80,7 +74,7 @@ module.exports.loginIn = async (req, res) => {
 
       const options = {
         expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
-        httpOnly: true
+        httpOnly: false
       };
 
       return res.status(200).cookie("token", token, options).json({
@@ -97,4 +91,17 @@ module.exports.loginIn = async (req, res) => {
   }
 };
 
+
+module.exports.logOut = (req, res) => {
+  res.clearCookie("token", {
+    httpOnly: true,  
+    secure: true,    
+    sameSite: 'Strict' 
+  });
+
+  res.status(200).json({
+    success: true,
+    message: "Successfully logged out"
+  });
+};
 

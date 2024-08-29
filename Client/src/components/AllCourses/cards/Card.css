@@ -1,0 +1,42 @@
+
+.course-card {
+    background-color: #fff8e1;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 60px;
+  }
+  
+  .course-image img {
+    width: 300px;
+    height: 200px;
+    border-radius: 10px;
+  }
+  
+  .course-info {
+    margin-top: 1rem;
+  }
+  
+  .course-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #777;
+  }
+  
+  .course-info h3 {
+    font-size: 1.25rem;
+    margin-top: 0.5rem;
+  }
+  
+  .view-courses {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color:#696969;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 11rem;
+  
+  }
+  

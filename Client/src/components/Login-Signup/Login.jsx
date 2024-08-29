@@ -2,8 +2,10 @@ import { useState } from "react";
 import "./Login.css";
 import { toast, ToastContainer } from "react-toastify";
 import "../../../node_modules/react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const navigate=useNavigate();
   const [signUpData, setSignUpData] = useState({
     username: "",
     email: "",
@@ -75,6 +77,7 @@ export default function Login() {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify(loginData),
       });
 
@@ -85,12 +88,12 @@ export default function Login() {
         console.log(message);
         toast.error(message);
       } else {
-        
         toast.success("Welcome To LearnLynx");
         setLoginData({
           email:'',
           password:''
         })
+        window.h
       }
     } catch (error) {
       console.error('Network error:', error);

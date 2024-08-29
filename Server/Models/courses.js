@@ -1,6 +1,5 @@
-const { time } = require("console");
+
 const mongoose=require("mongoose");
-const { type } = require("os");
 
 const Schema=mongoose.Schema;
 
@@ -19,6 +18,10 @@ const courseSchema= new Schema({
     },
     img:{
         type:String
+    },
+    owner:{
+        type:Schema.Types.ObjectId,
+        ref:"Teacher"
     }
 })
 

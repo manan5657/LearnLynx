@@ -1,0 +1,47 @@
+/* YourComponent.css */
+
+.course-grid {
+    display: flex;
+    gap: 4rem;
+    flex-wrap: wrap;
+  }
+  
+  .course-card {
+    background-color: '#FEF6E4';
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    height: 350px;
+  }
+  
+  .course-image img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .course-info {
+    margin-top: 1rem;
+  }
+  
+  .course-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #777;
+  }
+  
+  .course-info h3 {
+    font-size: 1.25rem;
+    margin-top: 0.5rem;
+  }
+  
+  .view-courses {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid black;
+    background-color: #c4c2c2;
+    border-radius: 18px;
+    cursor: pointer;
+  }
+  

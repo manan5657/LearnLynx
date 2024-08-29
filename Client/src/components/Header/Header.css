@@ -47,8 +47,8 @@ nav {
 }
 .authentication {
   display: flex;
-  gap: 10%;
-  /* margin-right: 10%; */
+  gap: 1.5rem;
+  margin-right: 5rem;
   font-size: 1.2rem;
   width: 20%;
 }

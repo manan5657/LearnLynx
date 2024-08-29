@@ -4,6 +4,7 @@ import rectangle2 from "../../../assets/rectangle-2.png";
 import rightbottom from "../../../assets/Image.png";
 import Programmer from "../../../assets/Programmer.gif.png";
 import "./Hero.css";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
@@ -24,11 +25,13 @@ export default function Hero() {
             <p className="java">JAVA</p>
           </div>
           <div>
-            <button className="enroll-btn">
-              <p className="enroll">
-                Enroll Now <span className="arrow">➔</span>
-              </p>
-            </button>
+          <Link to="/all-courses" className="enroll-btn-link">
+      <button className="enroll-btn">
+        <p className="enroll">
+          Enroll Now <span className="arrow">➔</span>
+        </p>
+      </button>
+    </Link>
           </div>
           <img className="left-bottom" src={leftbottom} alt="leftbottom" />
         </div>

@@ -6,6 +6,7 @@ const{greetMail}=require('../mail.js');
 router.post("/signup",userController.signUp,greetMail);
 
   router.post("/login",userController.loginIn);
+  router.get('/logout',userController.logOut);
 
 
   module.exports=router;

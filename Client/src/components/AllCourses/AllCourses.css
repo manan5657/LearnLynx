@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app-container {
+  background-color: white;
+  min-height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: white; 
+  color: black;
+  position: relative;
+  height: 55px;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+}
+
+.navbar-links li {
+  margin-right: 2rem;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: black;
+}
+
+.navbar-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.navbar-logo img {
+  width: 100px;
+}
+
+.navbar-auth {
+  display: flex;
+}
+
+.navbar-auth .login-btn,
+.navbar-auth .signup-btn {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  color: white;
+}
+
+.login-btn {
+  background-color: transparent;
+  color: black;
+  margin-right: 1rem;
+}
+
+.signup-btn {
+  background-color: #fbbf24;
+  color: black;
+}
+
+.grey-div {
+  height: 85px;
+  background-color: #333533; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Header styling inside the grey div */
+.head {
+  color: white; /* Adjusted to contrast with the grey background */
+  text-align: left;
+  margin-right:70rem; /* Removed padding and margin for better alignment */
+}
+
+.head h1 {
+  font-size: 2.25rem; /* Tailwind text-4xl */
+  font-weight: 500; /* Tailwind font-medium */
+  display: inline-block; /* To ensure it stays centered */
+}
+
+.header-span {
+  color: #fbbf24;
+  font-style: italic;
+  border-width: 2px;
+  border-color: #fbbf24;
+  padding-left: 16px; 
+  padding-right: 16px;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-radius: 9999px; 
+  margin-left: 1.25rem; 
+  margin-right: 0.75rem; 
+}
+
+/* Layout styling */
+.flex {
+  display: flex;
+}
+
+.main-content {
+  padding: 2rem 3rem;
+}
+
+.filters-container {
+  width: 25%; 
+  margin-right: 1.5rem;
+  background-color: white;
+}
+
+.courses-container {
+  width: 75%; /* Tailwind w-3/4 */
+}

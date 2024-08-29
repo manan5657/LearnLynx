@@ -22,21 +22,12 @@ mongoose
   .catch((err) => console.log("Failed to connect to MongoDB", err));
 
 //Routes
-app.use("/admin", courseRouter);
+app.use("/api/admin", courseRouter);
 app.use("/api",userRouter);
 
 
-app.get('/logout', (req, res) => {
-  res.clearCookie("token", {
-      expires: new Date(Date.now()),
-      httpOnly: true
-  });
 
-  res.status(200).json({
-      success: true,
-      message: "Successfully logged out"
-  });
-});
+
 
 
 

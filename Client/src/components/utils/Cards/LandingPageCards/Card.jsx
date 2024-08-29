@@ -1,10 +1,10 @@
 import "./Card.css";
 
-export default function cards({ title, sale, image, price, dispr }) {
+export default function cards({ title,  image, price, dispr }) {
   return (
     <>
       <div className="card">
-        <div className="ribbon-sale-card">{sale}% OFF</div>
+        <div className="ribbon-sale-card">Trending</div>
         <img className="image-i" src={image} alt="course1" />
         <p className="page3-card-para">{title}</p>
         <em>
