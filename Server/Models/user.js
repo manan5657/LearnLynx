@@ -8,6 +8,7 @@ const userSchema=new Schema({
     username:{
         type:String,
         require:true,
+        unique: false ,
     },
     email:{
         type:String,
@@ -27,7 +28,6 @@ const userSchema=new Schema({
     }
 })
 
-userSchema.plugin(passportLocal);
 
 module.exports=mongoose.model("User",userSchema);
 

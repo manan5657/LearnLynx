@@ -1,32 +1,86 @@
 import { useState } from "react";
 import "./Login.css";
+import { toast, ToastContainer } from 'react-toastify';
+import '../../../node_modules/react-toastify/dist/ReactToastify.css';
 
 export default function Login() {
-  // const [isLogin, setIsLogin] = useState(true);
+  const[signUpData,setSignUpData]=useState({
+    username:'',
+    email:'',
+    password:'',
+    confirmPassword:''
+  })
+  const[loginData,setLoginData]=useState({
+    email:'',
+    password:''
+  })
 
-  // const showLogin = () => {
-  //   setIsLogin(true);
-  // };
+  const handleSignUpchange=(e)=>{
+    const{name,value}=e.target;
+    setSignUpData({...signUpData,
+      [name]:value,
+    })
+  };
 
-  // const showRegister = () => {
-  //   setIsLogin(false);
-  // };
+  const handleSignupSubmit=async(e)=>{
+    e.preventDefault();
+    if (signUpData.password !== signUpData.confirmPassword) {
+      toast.error("Password And Confirm Password Not Matched")
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: signUpData.username,
+          email: signUpData.email,
+          password: signUpData.password,
+        }),
+      });
+
+      const result = await response.json();
+
+      if(result.statusCode==400){
+        const message=result.message;
+        console.log(message);
+        toast.error(message);
+      }
+      else{
+        toast.success("User Registered Succesfully");
+      }
+      
+    } catch (error) {
+      toast.error('Network error:', error);
+    }
+  };
+
+  
+
+
+
 
   return (
+    <>
     <div className="loginSignupMain">
       <input type="checkbox" id="loginSignupChk" aria-hidden="true" />
 
       <div className="loginSignupSignup">
-        <form>
+        <form onSubmit={handleSignupSubmit}>
           <label htmlFor="loginSignupChk" aria-hidden="true">
             Sign up
           </label>
           <input
             type="text"
-            name="txt"
+            name="username"
             placeholder="User name"
             required=""
             className="loginSignupInput"
+            value={signUpData.username}
+            onChange={handleSignUpchange}
           />
           <input
             type="email"
@@ -34,22 +88,28 @@ export default function Login() {
             placeholder="Email"
             required=""
             className="loginSignupInput"
+            value={signUpData.email}
+            onChange={handleSignUpchange}
           />
           <input
             type="password"
-            name="broj"
+            name="password"
             placeholder="Password"
-            required=""
+            required
             className="loginSignupInput"
+            value={signUpData.password}
+            onChange={handleSignUpchange}
           />
           <input
             type="password"
-            name="pswd"
+            name="confirmPassword"
             placeholder="Confirm Password"
             required=""
             className="loginSignupInput"
+            value={signUpData.confirmPassword}
+            onChange={handleSignUpchange}
           />
-          <button className="loginSignupButton signupbutton">Sign up</button>
+          <button className="loginSignupButton signupbutton" type="submit">Sign up</button>
         </form>
       </div>
 
@@ -76,5 +136,13 @@ export default function Login() {
         </form>
       </div>
     </div>
+    <ToastContainer 
+    position="bottom-right"
+    autoClose={3000} // Close after 3 seconds
+    hideProgressBar={false}
+/>
+
+    </>
   );
 }
+

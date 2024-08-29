@@ -8,3 +8,10 @@ module.exports.courseSchema = joi.object({
 });
 
 
+module.exports.userSchema=joi.object({
+  username:joi.string().required,
+  email:joi.string().required(),
+  password:joi.string().required()
+})
+
+

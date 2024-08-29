@@ -7,13 +7,13 @@ function Header() {
       <div className="header">
         <div>
           <nav>
-            <NavLink className="navlink" to="/" activeClassName="active-link">
+            <NavLink className="navlink" to="/" >
               Home
             </NavLink>
-            <NavLink className="navlink" to="/blog" activeClassName="active-link">
+            <NavLink className="navlink" to="/blog" >
               Blog
             </NavLink>
-            <NavLink className="navlink" to="/course" activeClassName="active-link">
+            <NavLink className="navlink" to="/course" >
               Course
             </NavLink>
           </nav>
