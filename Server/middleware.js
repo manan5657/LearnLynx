@@ -1,7 +1,10 @@
 const Schema = require("./Schema.js");
 const ExpressError = require("./utils/ExpressError.js");
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e52bfa57c5322068323eea9593dea3afdf9b26c6
 module.exports.validateCourse = (req, res, next) => {
   let { error } = Schema.courseSchema.validate(req.body);
   if (error) {
@@ -11,6 +14,7 @@ module.exports.validateCourse = (req, res, next) => {
     next();
   }
 };
+<<<<<<< HEAD
 
 module.exports.validateUser=(req,res,next)=>{
   let error=Schema.userSchema.valid(req.body);
@@ -22,3 +26,5 @@ module.exports.validateUser=(req,res,next)=>{
     next();
   }
 }
+=======
+>>>>>>> e52bfa57c5322068323eea9593dea3afdf9b26c6

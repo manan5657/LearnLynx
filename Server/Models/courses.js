@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 
 const mongoose=require("mongoose");
+=======
+const { time } = require("console");
+const mongoose=require("mongoose");
+const { type } = require("os");
+>>>>>>> e52bfa57c5322068323eea9593dea3afdf9b26c6
 
 const Schema=mongoose.Schema;
 
@@ -18,10 +24,13 @@ const courseSchema= new Schema({
     },
     img:{
         type:String
+<<<<<<< HEAD
     },
     owner:{
         type:Schema.Types.ObjectId,
         ref:"Teacher"
+=======
+>>>>>>> e52bfa57c5322068323eea9593dea3afdf9b26c6
     }
 })
 
