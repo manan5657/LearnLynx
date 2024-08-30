@@ -1,6 +1,12 @@
 
 import './Card.css';
-const Card = ({ title,image }) => {
+import { useNavigate } from 'react-router-dom';
+const Card = ({ title,image,price,discount_price,id }) => {
+  const navigate=useNavigate();
+  const handleId = ()=>{
+    navigate(`/Course/${id}`);
+  }
+
     return (
       <div className="course-card">
         <div className="course-image">
@@ -11,8 +17,11 @@ const Card = ({ title,image }) => {
           <div className="course-meta">
             <span>By: Love</span>
           </div>
-            
-          <button className="view-courses">View Course</button>
+          <div class="price">
+          <span class="price1"> ₹ {price}</span> 
+          <span > ₹ {discount_price}</span>
+          </div>
+          <button className="view-courses"onClick={handleId}>View Course</button>
         </div>
       </div>
     );

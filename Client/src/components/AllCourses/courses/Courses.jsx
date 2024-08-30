@@ -1,39 +1,29 @@
 import CourseCard from '../cards/Card';
 import '../AllCourses.css';
 import './Courses.css';
-import image1 from '../../../assets/course_card_1.png';
-import image2 from '../../../assets/course_card_1.png';
+import { useState,useEffect } from 'react';
+import {useNavigate} from 'react-router-dom'
 
 const App = () => {
+  const navigate=useNavigate();
+  const [courses,setCourses]=useState([]);
+  useEffect(() => {
+    fetch('/api/admin/courses')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch courses');
+        }
+        return response.json();
+      })
+      .then(data => setCourses(data))
+      .catch(error => setError(error.message));
+  }, []);
+
+
   return (
     <div className="App">
       <div className="course-grid">
-        <CourseCard
-          title="Web Programming"
-          image={image1}
-          
-          teacher="kashi"
-        />
-        <CourseCard
-          title="Java Development"
-          image={image2} 
-        teacher="Love"
-        />
-                <CourseCard
-          title="Java Development"
-          image={image2} 
-        teacher="Love"
-        />
-                <CourseCard
-          title="Java Development"
-          image={image2} 
-        teacher="Love"
-        />
-                <CourseCard
-          title="Java Development"
-          image={image2} 
-        teacher="Love"
-        />
+        {courses.map(course=>(<CourseCard title={course.title} image={course.img} discount_price={course.discountPrice} price={course.price} id={course._id}/>))}
       </div>
     </div>
   );

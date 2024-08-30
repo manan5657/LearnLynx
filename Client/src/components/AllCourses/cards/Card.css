@@ -1,10 +1,11 @@
 
 .course-card {
     background-color: #fff8e1;
-    padding: 1rem;
+    padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-top: 60px;
+    height: 300px;
   }
   
   .course-image img {
@@ -20,8 +21,16 @@
   .course-meta {
     display: flex;
     justify-content: space-between;
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #777;
+ 
+  }
+  .price{
+    
+    gap: 20px;
+  }
+  .price1{
+    text-decoration:line-through;
   }
   
   .course-info h3 {
@@ -37,6 +46,7 @@
     border-radius: 5px;
     cursor: pointer;
     margin-left: 11rem;
+    margin-bottom: 2rem;
   
   }
   
