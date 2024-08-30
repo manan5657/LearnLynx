@@ -6,27 +6,26 @@
   border-radius: 15px;
   position: relative;
   overflow: hidden;
-  padding-top: 1rem;
   cursor: pointer;
 }
 .card:hover > .image-i {
   filter: brightness(70%);
 }
-.image-u {
+/* .image-u {
   height: 13rem;
   width: auto;
   border-bottom: 2px solid rgb(158, 158, 158);
   overflow: hidden;
   transition: all 0.3s ease-in-out;
-}
+} */
 .image-i {
   /* height: auto; */
   height: 14rem;
   width: 100%;
   object-fit: cover;
-  padding-bottom: 1rem;
   border-bottom: 2px solid #aaa;
   transition: all 0.3s ease-in-out;
+
   /* object-position: center; */
 }
 .page3-card-para {
@@ -64,6 +63,7 @@
   background: #ffc156;
   transform: rotate(45deg);
   color: #000;
+  z-index: 99;
 }
 .disc-price-card {
   position: absolute;

@@ -1,16 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
-
 body {
-  font-family: 'Outfit', sans-serif;
-  background-color: white;
+  font-family: "Outfit", sans-serif;
+  background-color: #f4f4f4;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .app-container {
-  background-color: white;
+  background-color: #ffffff;
   min-height: 100vh;
+  padding-bottom: 2rem;
 }
 
 .navbar {
@@ -18,10 +18,12 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: white; 
-  color: black;
-  position: relative;
-  height: 55px;
+  background-color: #ffffff;
+  color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  position: sticky;
+  top: 0;
 }
 
 .navbar-links {
@@ -36,7 +38,12 @@ body {
 
 .navbar-links a {
   text-decoration: none;
-  color: black;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+  color: #f9c365;
 }
 
 .navbar-logo {
@@ -46,7 +53,7 @@ body {
 }
 
 .navbar-logo img {
-  width: 100px;
+  width: 120px;
 }
 
 .navbar-auth {
@@ -58,39 +65,52 @@ body {
   text-decoration: none;
   padding: 0.5rem 1rem;
   border-radius: 5px;
-  color: white;
+  color: #ffffff;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .login-btn {
   background-color: transparent;
-  color: black;
+  color: #333;
   margin-right: 1rem;
+}
+
+.login-btn:hover {
+  background-color: #f9c365;
+  color: #ffffff;
 }
 
 .signup-btn {
   background-color: #fbbf24;
-  color: black;
+  color: #333;
+}
+
+.signup-btn:hover {
+  background-color: #f9c365;
+  color: #ffffff;
 }
 
 .grey-div {
   height: 85px;
-  background-color: #333533; 
+  background-color: #333533;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Header styling inside the grey div */
 .head {
-  color: white; /* Adjusted to contrast with the grey background */
+  color: white;
   text-align: left;
-  margin-right:70rem; /* Removed padding and margin for better alignment */
+  margin-right: 70rem;
 }
 
 .head h1 {
-  font-size: 2.25rem; /* Tailwind text-4xl */
-  font-weight: 500; /* Tailwind font-medium */
-  display: inline-block; /* To ensure it stays centered */
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
 }
 
 .header-span {
@@ -98,30 +118,18 @@ body {
   font-style: italic;
   border-width: 2px;
   border-color: #fbbf24;
-  padding-left: 16px; 
-  padding-right: 16px;
-  padding-top: 0;
-  padding-bottom: 0;
-  border-radius: 9999px; 
-  margin-left: 1.25rem; 
-  margin-right: 0.75rem; 
+  padding: 0 1rem;
+  border-radius: 50px;
+  margin-left: 1.25rem;
 }
 
-/* Layout styling */
 .flex {
   display: flex;
 }
 
 .main-content {
   padding: 2rem 3rem;
-}
-
-.filters-container {
-  width: 25%; 
-  margin-right: 1.5rem;
-  background-color: white;
-}
-
-.courses-container {
-  width: 75%; /* Tailwind w-3/4 */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
