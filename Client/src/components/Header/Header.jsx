@@ -1,5 +1,4 @@
 import "./Header.css"
-<<<<<<< HEAD
 import { Link, NavLink ,useNavigate} from "react-router-dom";
 import Logo from "../../assets/Logo.png"
 import { useState,useEffect, } from "react";
@@ -51,17 +50,11 @@ function Header() {
     }
   };
 
-=======
-import { Link, NavLink } from "react-router-dom";
-import Logo from "../../assets/Logo.png"
-function Header() {
->>>>>>> e52bfa57c5322068323eea9593dea3afdf9b26c6
   return (
     <>
       <div className="header">
         <div>
           <nav>
-<<<<<<< HEAD
             <NavLink className="navlink" to="/" >
               Home
             </NavLink>
@@ -70,16 +63,6 @@ function Header() {
             </NavLink>
             <NavLink className="navlink" to="/course" >
               Courses
-=======
-            <NavLink className="navlink" to="/" activeClassName="active-link">
-              Home
-            </NavLink>
-            <NavLink className="navlink" to="/blog" activeClassName="active-link">
-              Blog
-            </NavLink>
-            <NavLink className="navlink" to="/course" activeClassName="active-link">
-              Course
->>>>>>> e52bfa57c5322068323eea9593dea3afdf9b26c6
             </NavLink>
           </nav>
         </div>
@@ -88,7 +71,6 @@ function Header() {
         </div>
         <div className="authentication">
           <Link className="link login" to="/login">
-<<<<<<< HEAD
           Teach on LearnLynx
           </Link>
           {isLoggedIn?(<Link className="link login" to="/login"onClick={handleLogout}>Logout</Link>):(<Link className="link signup" to="/login">Login</Link>)}
@@ -101,14 +83,6 @@ function Header() {
         autoClose={3000} // Close after 3 seconds
         hideProgressBar={false}
       />
-=======
-          Login
-          </Link>
-          <Link className="link signup" to="/signup">
-          Sign Up</Link>
-        </div>
-      </div>
->>>>>>> e52bfa57c5322068323eea9593dea3afdf9b26c6
     </>
   );
 }

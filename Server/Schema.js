@@ -8,7 +8,6 @@ module.exports.courseSchema = joi.object({
 });
 
 
-<<<<<<< HEAD
 module.exports.userSchema=joi.object({
   username:joi.string().required,
   email:joi.string().required(),
@@ -16,5 +15,3 @@ module.exports.userSchema=joi.object({
 })
 
 
-=======
->>>>>>> e52bfa57c5322068323eea9593dea3afdf9b26c6

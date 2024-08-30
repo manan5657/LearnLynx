@@ -4,12 +4,11 @@ import rectangle2 from "../../../assets/rectangle-2.png";
 import rightbottom from "../../../assets/Image.png";
 import Programmer from "../../../assets/Programmer.gif.png";
 import "./Hero.css";
-<<<<<<< HEAD
 import { Link } from "react-router-dom";
-=======
->>>>>>> e52bfa57c5322068323eea9593dea3afdf9b26c6
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
+  const navigate=useNavigate();
   return (
     <>
       <div className="container">
@@ -28,21 +27,13 @@ export default function Hero() {
             <p className="java">JAVA</p>
           </div>
           <div>
-<<<<<<< HEAD
-          <Link to="/all-courses" className="enroll-btn-link">
-      <button className="enroll-btn">
+          
+      <button onClick={()=>{navigate('/all-courses')}}className="enroll-btn">
         <p className="enroll">
           Enroll Now <span className="arrow">➔</span>
         </p>
       </button>
-    </Link>
-=======
-            <button className="enroll-btn">
-              <p className="enroll">
-                Enroll Now <span className="arrow">➔</span>
-              </p>
-            </button>
->>>>>>> e52bfa57c5322068323eea9593dea3afdf9b26c6
+    
           </div>
           <img className="left-bottom" src={leftbottom} alt="leftbottom" />
         </div>

@@ -2,6 +2,7 @@ import Layout from "./layout.jsx";
 import Landingpage from "./components/LandingPage/Landingpage.jsx";
 import Login from "./components/Login-Signup/Login.jsx";
 import Courses from './components/AllCourses/AllCourses.jsx';
+import ViewCourse from "./components/view-course/ViewCourse.jsx";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -17,10 +18,7 @@ function App() {
           <Route path="/all-courses" element={<Courses />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Login/>} />
-          <Route path="/Course/:id" element={<div>Course</div>} />
-          {/* <Route path="/blog" element={<div>Blog</div>} />
-          <Route path="/course" element={<div>Course</div>} /> */}
-          <Route path="/login" element={<Login />} />
+          <Route path="/Course/:id" element={<ViewCourse/>} />
         </Route>
       </>
     )

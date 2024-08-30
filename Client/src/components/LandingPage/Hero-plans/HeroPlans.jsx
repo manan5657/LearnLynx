@@ -1,18 +1,15 @@
-<<<<<<< HEAD
-=======
 import React, { useEffect, useState } from "react";
->>>>>>> e52bfa57c5322068323eea9593dea3afdf9b26c6
 import "./HeroPlans.css";
 import personstanding from "../../../assets/two-person-standing.png";
 import teaching from "../../../assets/teaching.png.png";
 import rabbitEar from "../../../assets/rabbit-ear.png";
 import rabbitflower from "../../../assets/rabbit-flower.png";
+import { useNavigate } from "react-router-dom";
+
 
 export default function HeroPlans() {
-<<<<<<< HEAD
-=======
   const [isInView, setIsInView] = useState(false);
-
+  const navigate = useNavigate()
   useEffect(() => {
     const handleScroll = () => {
       const rabbitSection = document.querySelector(".page5-div2");
@@ -33,7 +30,6 @@ export default function HeroPlans() {
     };
   }, []);
 
->>>>>>> e52bfa57c5322068323eea9593dea3afdf9b26c6
   return (
     <>
       <div className="page4">
@@ -75,16 +71,12 @@ export default function HeroPlans() {
               After One Good Dinner Any One Can Forgive Anybody, Even One's Own
               Relations.
             </p>
-            <button className="page5-order">
+            <button className="page5-order"onClick={()=>{navigate('/all-courses')}}>
               Order Now <span className="page5-arrow">→</span>
             </button>
           </div>
         </div>
-<<<<<<< HEAD
-        <div className="page5-div2 page5-col">
-=======
         <div className={`page5-div2 page5-col ${isInView ? "animate" : ""}`}>
->>>>>>> e52bfa57c5322068323eea9593dea3afdf9b26c6
           <p className="page5-learning">Try Learning Free</p>
           <p className="page5-on">
             On <span className="page5-mobile">Mobile App</span>
@@ -124,8 +116,6 @@ export default function HeroPlans() {
     </>
   );
 }
-<<<<<<< HEAD
-=======
 
 // import "./HeroPlans.css";
 // import personstanding from "../../../assets/two-person-standing.png";
@@ -220,4 +210,3 @@ export default function HeroPlans() {
 //     </>
 //   );
 // }
->>>>>>> e52bfa57c5322068323eea9593dea3afdf9b26c6

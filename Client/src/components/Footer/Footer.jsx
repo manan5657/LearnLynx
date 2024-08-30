@@ -1,16 +1,8 @@
-<<<<<<< HEAD
-=======
 import React, { useEffect, useState } from "react";
->>>>>>> e52bfa57c5322068323eea9593dea3afdf9b26c6
 import "./Footer.css";
 import logo from "../../assets/logo-learnlynx.png";
 
 export default function Footer() {
-<<<<<<< HEAD
-  return (
-    <>
-      <div className="footer">
-=======
   const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
@@ -36,17 +28,11 @@ export default function Footer() {
   return (
     <>
       <div className={`footer ${isInView ? "animate-footer" : ""}`}>
->>>>>>> e52bfa57c5322068323eea9593dea3afdf9b26c6
         <div className="foot">
           <div className="foot-div1">
             <div>
               <p className="foot-learnlynx">
-<<<<<<< HEAD
-                {" "}
-                <img className="logo" src={logo} alt="" />
-=======
                 <img className="logo" src={logo} alt="LearnLynx" />
->>>>>>> e52bfa57c5322068323eea9593dea3afdf9b26c6
                 LearnLynx
               </p>
               <div className="foot-left">
@@ -101,8 +87,6 @@ export default function Footer() {
     </>
   );
 }
-<<<<<<< HEAD
-=======
 
 // import "./Footer.css";
 // import logo from "../../assets/logo-learnlynx.png";
@@ -171,4 +155,3 @@ export default function Footer() {
 //     </>
 //   );
 // }
->>>>>>> e52bfa57c5322068323eea9593dea3afdf9b26c6

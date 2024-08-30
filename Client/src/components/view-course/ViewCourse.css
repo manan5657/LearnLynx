@@ -1,0 +1,72 @@
+.custom-class-2 {
+    background-color: #333533; /* Equivalent to bg-custom-gray */
+    padding-top: 0; /* Equivalent to py-0 */
+    padding-bottom: 0; /* Equivalent to py-0 */
+    display: flex; /* Equivalent to flex */
+    justify-content: flex-end; /* Equivalent to justify-end */
+    padding-right: 5rem; /* Equivalent to pr-20 */
+    height: 18rem; /* Equivalent to h-30 */
+  }
+  .potential {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-top:8rem;
+    text-align: left;
+    margin-right: 20rem;
+    color: white;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  .learnlynx {
+      background-color: #F9C365;
+      display: block;
+      width: 280px;
+      padding-left: 2rem;
+      border: 2px solid black;
+      border-radius: 35px;
+      color: black;
+      
+      /* margin-left: 20px; */
+  }
+  
+  .custom-class {
+    width: 17rem; /* Equivalent to max-w-2xl */
+    background-color: white; /* Equivalent to bg-white */
+    border-radius: 0.75rem; /* Equivalent to rounded-xl */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06); /* Equivalent to shadow-md */
+    overflow: hidden; /* Equivalent to overflow-hidden */
+    margin-top: 1rem; /* Equivalent to mt-12 */
+    margin-right: 10rem; /* Equivalent to mr-40 */
+    position: relative;
+    top: 40px;
+    height: 25rem;
+  }
+  
+  .custom-class img {
+    height: 12rem; /* Equivalent to h-48 */
+    width: 100%; /* Equivalent to w-full */
+    object-fit: cover; /* Equivalent to object-cover */
+  }
+  
+  .custom-class .content {
+    padding: 1rem; /* Equivalent to p-4 */
+  }
+  
+  .custom-class h3 {
+    font-size: 1.25rem; /* Equivalent to text-xl */
+    font-weight: 600; /* Equivalent to font-semibold */
+  
+    margin-left: 3rem; /* Equivalent to ml-12 */
+  }
+  
+  .custom-class button {
+    margin-left: 4rem; /* Equivalent to ml-12 */
+    padding: 0.5rem 1rem; /* Equivalent to px-4 py-2 */
+    background-color: #b1b1b1; /* Equivalent to bg-gray-100 */
+    border: 1px solid #e2e8f0; /* Equivalent to border */
+    border-radius: 9999px; /* Equivalent to rounded-full */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Equivalent to shadow-md */
+  }
+  
+  .view-course{
+    height: 100vh;
+  }

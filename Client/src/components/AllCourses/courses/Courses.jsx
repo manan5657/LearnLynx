@@ -5,7 +5,6 @@ import { useState,useEffect } from 'react';
 import {useNavigate} from 'react-router-dom'
 
 const App = () => {
-  const navigate=useNavigate();
   const [courses,setCourses]=useState([]);
   useEffect(() => {
     fetch('/api/admin/courses')
