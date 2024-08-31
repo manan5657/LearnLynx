@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 const Card = ({ title, image, price, discount_price, id }) => {
   const navigate = useNavigate();
   const handleId = () => {
+    window.scrollTo(0,0)
     navigate(`/Course/${id}`);
   };
 

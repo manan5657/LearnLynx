@@ -1,11 +1,54 @@
 import "./ViewCourse.css";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import axios from 'axios';
+import logo from '../../assets/logo-learnlynx.png';
 
 export default function ViewCourse() {
   const { id } = useParams();
   const [course, setCourse] = useState({});
   const [error, setError] = useState(null);
+
+  const checkOutHandler = async (ammount) => {
+    try {
+      const {
+        data: { order },
+      } = await axios.post("http://localhost:3000/api/checkout", {
+        ammount,
+      });
+      const {
+        data: { key },
+      } = await axios.get("http://localhost:3000/api/getkey");
+
+      const options = {
+        key,
+        amount: order.amount,
+        currency: "INR",
+        name: "LearnLynx",
+        description: "Testing Razorpay",
+        image: `${logo}`,
+        order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        callback_url: "http://localhost:3000/api/paymentverification",
+        prefill: {
+          name: "Gaurav Kumar",
+          email: "gaurav.kumar@example.com",
+          contact: "9000090000",
+        },
+        notes: {
+          address: "Razorpay Corporate Office",
+        },
+        theme: {
+          color: "#f9c365",
+        },
+      };
+      console.log(window);
+      console.log(options);
+      var rzp1 = window.Razorpay(options);
+      rzp1.open();
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
     fetch(`/api/admin/course/${id}`)
@@ -18,6 +61,7 @@ export default function ViewCourse() {
       .then((data) => setCourse(data))
       .catch((error) => setError(error.message));
   }, [id]);
+  
 
   return (
     <>
@@ -38,7 +82,7 @@ export default function ViewCourse() {
               <p className="course-price discount-price">
                 ₹ {course.discountPrice}
               </p>
-              <button className="enroll-btn">Enroll Now!</button>
+              <button className="enroll-btn" onClick={()=>{checkOutHandler(course.discountPrice)}}>Enroll Now!</button>
             </div>
           </div>
         </div>
