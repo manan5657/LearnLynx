@@ -1,16 +1,29 @@
 import "./ViewCourse.css";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 import logo from '../../assets/logo-learnlynx.png';
+import { toast, ToastContainer } from "react-toastify";
+import "../../../node_modules/react-toastify/dist/ReactToastify.css";
+
 
 export default function ViewCourse() {
   const { id } = useParams();
   const [course, setCourse] = useState({});
   const [error, setError] = useState(null);
+  const navigate=useNavigate();
 
   const checkOutHandler = async (ammount) => {
+    const verify = await axios.get("http://localhost:3000/api/verifyUser",{withCredentials:true});
+    if(verify.data.success==false){
+      toast.error('Please Login First');
+      setTimeout(() => {
+        navigate('/login');
+      }, (3000));
+    }
+    else{
     try {
+
       const {
         data: { order },
       } = await axios.post("http://localhost:3000/api/checkout", {
@@ -49,6 +62,7 @@ export default function ViewCourse() {
       console.log(err);
     }
   };
+}
 
   useEffect(() => {
     fetch(`/api/admin/course/${id}`)
@@ -127,6 +141,11 @@ export default function ViewCourse() {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={3000} // Close after 3 seconds
+        hideProgressBar={false}
+      />
     </>
   );
 }

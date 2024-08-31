@@ -8,6 +8,8 @@ const courseRouter = require("./Routes/course_router");
 const userRouter=require('./Routes/userRouter');
 const paymentRouter=require('./Routes/paymentRouter');
 const cors=require('cors');
+const session=require('express-session');
+const jwt = require('jsonwebtoken');
 
 const cookieParser = require('cookie-parser');
 
@@ -17,7 +19,7 @@ const MongoUrl = process.env.MONGOURL;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());  
 app.use(cookieParser());
-app.use(cors());
+app.use(cors({origin:'http://localhost:5173',credentials:true}));
 //Connecting Database
 mongoose
   .connect(MongoUrl)
@@ -33,6 +35,7 @@ app.use("/api",paymentRouter);
 app.get('/api/getkey',(req,res)=>{
   res.status(200).send({key:process.env.RAZORPAY_API_KEY})
 })
+
 
 
 

@@ -2,10 +2,11 @@ import { useState } from "react";
 import "./Login.css";
 import { toast, ToastContainer } from "react-toastify";
 import "../../../node_modules/react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [signUpData, setSignUpData] = useState({
     username: "",
     email: "",
@@ -24,7 +25,7 @@ export default function Login() {
       [name]: value,
     });
   };
-  const handleSignUpchange = (e) => {
+  const handleSignUpChange = (e) => {
     const { name, value } = e.target;
     setSignUpData({ ...signUpData, [name]: value });
   };
@@ -37,26 +38,18 @@ export default function Login() {
     }
 
     try {
-      const response = await fetch("/api/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: signUpData.username,
-          email: signUpData.email,
-          password: signUpData.password,
-        }),
+      const response = await axios.post("http://localhost:3000/api/signup", {
+        username: signUpData.username,
+        email: signUpData.email,
+        password: signUpData.password,
       });
 
-      const result = await response.json();
-
-      if (result.statusCode == 400) {
-        const message = result.message;
+      if (response.data.statusCode === 400) {
+        const message = response.data.message;
         console.log(message);
         toast.error(message);
       } else {
-        toast.success("User Registered Succesfully");
+        toast.success("User Registered Successfully");
         setSignUpData({
           username: "",
           email: "",
@@ -65,38 +58,39 @@ export default function Login() {
         });
       }
     } catch (error) {
-      toast.error("Network error:", error);
+      toast.error(`Network error: ${error.message}`);
     }
   };
+
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await axios.post(
+        "http://localhost:3000/api/login",
+        {
+          email: loginData.email,
+          password: loginData.password,
         },
-        credentials: 'include',
-        body: JSON.stringify(loginData),
-      });
+        { withCredentials: true } // Ensure cookies are included
+      );
 
-      const result = await response.json();
-
-      if (result.statusCode == 400) {
-        const message = result.message;
+      if (response.data.statusCode === 400) {
+        const message = response.data.message;
         console.log(message);
         toast.error(message);
       } else {
         toast.success("Welcome To LearnLynx");
         setLoginData({
-          email:'',
-          password:''
-        })
-        window.h
+          email: "",
+          password: "",
+        });
+        // Redirect after successful login
+
       }
     } catch (error) {
-      console.error('Network error:', error);
+      console.error(`Network error: ${error.message}`);
+      toast.error(`Network error: ${error.message}`);
     }
   };
 
@@ -114,19 +108,19 @@ export default function Login() {
               type="text"
               name="username"
               placeholder="User name"
-              required=""
+              required
               className="loginSignupInput"
               value={signUpData.username}
-              onChange={handleSignUpchange}
+              onChange={handleSignUpChange}
             />
             <input
               type="email"
               name="email"
               placeholder="Email"
-              required=""
+              required
               className="loginSignupInput"
               value={signUpData.email}
-              onChange={handleSignUpchange}
+              onChange={handleSignUpChange}
             />
             <input
               type="password"
@@ -135,16 +129,16 @@ export default function Login() {
               required
               className="loginSignupInput"
               value={signUpData.password}
-              onChange={handleSignUpchange}
+              onChange={handleSignUpChange}
             />
             <input
               type="password"
               name="confirmPassword"
               placeholder="Confirm Password"
-              required=""
+              required
               className="loginSignupInput"
               value={signUpData.confirmPassword}
-              onChange={handleSignUpchange}
+              onChange={handleSignUpChange}
             />
             <button className="loginSignupButton signupbutton" type="submit">
               Sign up
@@ -161,7 +155,7 @@ export default function Login() {
               type="email"
               name="email"
               placeholder="Email"
-              required=""
+              required
               className="loginSignupInput"
               value={loginData.email}
               onChange={handleLoginChange}
@@ -170,12 +164,14 @@ export default function Login() {
               type="password"
               name="password"
               placeholder="Password"
+              required
               className="loginSignupInput"
               value={loginData.password}
               onChange={handleLoginChange}
-              required
             />
-            <button className="loginSignupButton" type="submit">Login</button>
+            <button className="loginSignupButton" type="submit">
+              Login
+            </button>
           </form>
         </div>
       </div>

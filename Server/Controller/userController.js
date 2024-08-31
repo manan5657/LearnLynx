@@ -105,3 +105,21 @@ module.exports.logOut = (req, res) => {
   });
 };
 
+module.exports.verifyUser=(req,res)=>{
+  const token=req.cookies.token;
+  if(!token){
+    res.json({
+      success:false,
+    })
+  }
+  else{
+  const verify=jwt.verify(token,'MySecretKey');
+  const id=verify.id;
+  req.user=verify;
+  res.json({
+    success:true,
+    id
+  });
+}
+}
+

@@ -61,7 +61,7 @@ function Header() {
             <NavLink className="navlink" to="/blog" >
               Blog
             </NavLink>
-            <NavLink className="navlink" to="/course" >
+            <NavLink className="navlink" to="/all-courses" >
               Courses
             </NavLink>
           </nav>

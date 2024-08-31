@@ -38,6 +38,7 @@ export default function HeroCourses() {
               image={course.img}
               dispr={course.discountPrice}
               price={course.price}
+              id={course._id}
             />
           ))}
         </div>
