@@ -74,6 +74,8 @@ export default function Login() {
         },
         { withCredentials: true } // Ensure cookies are included
       );
+      const teacher=response.data.user.teacher;
+      console.log(teacher)  
 
       if (response.data.statusCode === 400) {
         const message = response.data.message;
@@ -81,11 +83,14 @@ export default function Login() {
         toast.error(message);
       } else {
         toast.success("Welcome To LearnLynx");
+        if(teacher){
+          window.location.href = `http://localhost:5173/admin/dashboard/`;
+        }
         setLoginData({
           email: "",
           password: "",
         });
-        // Redirect after successful login
+        
 
       }
     } catch (error) {

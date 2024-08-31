@@ -48,9 +48,9 @@ nav {
 .authentication {
   display: flex;
   gap: 1.5rem;
-  margin-right: 5rem;
+  /* margin-right: 2rem; */
   font-size: 1.2rem;
-  width: 20%;
+  width: 33%;
 }
 .link {
   text-decoration: none;
