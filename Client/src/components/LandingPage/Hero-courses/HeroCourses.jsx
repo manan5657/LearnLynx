@@ -8,20 +8,20 @@ export default function HeroCourses() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('/api/admin/courses')
-      .then(response => {
+    fetch("/api/admin/courses")
+      .then((response) => {
         if (!response.ok) {
-          throw new Error('Failed to fetch courses');
+          throw new Error("Failed to fetch courses");
         }
         return response.json();
       })
-      .then(data => setCourses(data))
-      .catch(error => console.error('Error:', error));
+      .then((data) => setCourses(data))
+      .catch((error) => console.error("Error:", error));
   }, []);
 
   const handleExploreClick = () => {
     window.scrollTo(0, 0); // Scroll to the top
-    navigate('/all-courses'); // Navigate to the new route
+    navigate("/all-courses"); // Navigate to the new route
   };
 
   return (
@@ -31,7 +31,7 @@ export default function HeroCourses() {
           Popular <span className="courses">Courses</span>
         </p>
         <div className="container2">
-          {courses.slice(0, 3).map(course => (
+          {courses.slice(0, 3).map((course) => (
             <Card
               key={course._id} // Add a unique key for each card
               title={course.title}
@@ -50,7 +50,6 @@ export default function HeroCourses() {
     </>
   );
 }
-
 
 // import Card from "../../utils/Cards/LandingPageCards/Card.jsx";
 // import "./HeroCourses.css";
@@ -82,13 +81,13 @@ export default function HeroCourses() {
 //             courses.slice(0,3).map(course=>(<Card title={course.title} image={course.img} dispr={course.discountPrice} price={course.price}/>))
 //           }
 //         </div>
-        
+
 //       <button className="explore-btn" onClick={()=>{navigate('/all-courses')}}>
 //         <p className="explore">
 //           Explore <span className="explore-arrow">→</span>
 //         </p>
 //       </button>
-    
+
 //       </div>
 //     </>
 //   );

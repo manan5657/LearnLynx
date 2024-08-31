@@ -1,7 +1,5 @@
-import React from 'react';
-import Filter from './filter/Filter';
-import Courses from './courses/Courses';
-
+import Filter from "./filter/Filter";
+import Courses from "./courses/Courses";
 
 const App = () => {
   return (
@@ -9,14 +7,12 @@ const App = () => {
       <div className="app-container">
         {/* <Navbar /> */}
         <div className="grey-div">
-        <header className="head">
-          <h1>
-            <span className="header-span">
-              Courses
-            </span>
-            we offer
-          </h1>
-        </header>
+          <header className="head">
+            <h1>
+              <span className="header-span">Courses</span>
+              we offer
+            </h1>
+          </header>
         </div>
         <div className="flex main-content">
           <aside className="filters-container">
