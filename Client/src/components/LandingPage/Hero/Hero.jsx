@@ -11,7 +11,7 @@ export default function Hero() {
   const navigate = useNavigate();
   return (
     <>
-      <div className="container">
+      <div className="hero-container">
         <div className="home2">
           <p className="improve">
             <img className="threedots" src={threedots} alt="threedots" />

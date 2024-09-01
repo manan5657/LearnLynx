@@ -71,17 +71,22 @@ function Header() {
             <img className="imageshown" src={Logo} alt="project photo" />
           </Link>
         </div>
-        {isLoggedIn?(        <div className="authentication">
-          <Link className="link login" to="/login">
-            Teach on LearnLynx
-          </Link>
-          <Link className="link login" to="/my-learnings">
-            My Learnings
-          </Link>
-          <Link className="link login" to="/login" onClick={handleLogout}>
-            Logout
-          </Link>
-          {/* {isLoggedIn ? (
+        {isLoggedIn ? (
+          <div className="authentication">
+            <Link className="link login" to="/plans">
+              Teach on LearnLynx
+            </Link>
+            <Link className="link login" to="/my-learnings">
+              My Learnings
+            </Link>
+            <Link
+              className="link login logout"
+              to="/login"
+              onClick={handleLogout}
+            >
+              Logout
+            </Link>
+            {/* {isLoggedIn ? (
             <Link className="link login" to="/login" onClick={handleLogout}>
               Logout
             </Link>
@@ -90,14 +95,16 @@ function Header() {
               Login
             </Link>
           )} */}
-        </div>):(        <div className="authentication">
-          <Link className="link login" to="/login">
-            Teach on LearnLynx
-          </Link>
-          <Link className="link signup" to="/login">
-            Login
-          </Link>
-          {/* {isLoggedIn ? (
+          </div>
+        ) : (
+          <div className="authentication">
+            <Link className="link login" to="/login">
+              Teach on LearnLynx
+            </Link>
+            <Link className="link signup" to="/login">
+              Login
+            </Link>
+            {/* {isLoggedIn ? (
             <Link className="link login" to="/login" onClick={handleLogout}>
               Logout
             </Link>
@@ -106,8 +113,8 @@ function Header() {
               Login
             </Link>
           )} */}
-        </div>)}
-
+          </div>
+        )}
       </div>
       <ToastContainer
         position="bottom-right"

@@ -6,10 +6,9 @@ import rabbitEar from "../../../assets/rabbit-ear.png";
 import rabbitflower from "../../../assets/rabbit-flower.png";
 import { useNavigate } from "react-router-dom";
 
-
 export default function HeroPlans() {
   const [isInView, setIsInView] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     const handleScroll = () => {
       const rabbitSection = document.querySelector(".page5-div2");
@@ -33,9 +32,9 @@ export default function HeroPlans() {
   return (
     <>
       <div className="page4">
-        <p className="potential">Unlock the Full Potential of</p>
+        <p className="page4-potential">Unlock the Full Potential of</p>
         <div className="page4-flex">
-          <div>
+          <div className="page4-left">
             <p className="page4-learnlynx">LearnLynx!</p>
             <p className="page4-one-content">
               Explore LearnLynx's flexible plans tailored for every educator!
@@ -71,7 +70,12 @@ export default function HeroPlans() {
               After One Good Dinner Any One Can Forgive Anybody, Even One's Own
               Relations.
             </p>
-            <button className="page5-order"onClick={()=>{navigate('/all-courses')}}>
+            <button
+              className="page5-order"
+              onClick={() => {
+                navigate("/all-courses");
+              }}
+            >
               Order Now <span className="page5-arrow">→</span>
             </button>
           </div>

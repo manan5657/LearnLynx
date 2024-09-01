@@ -4,7 +4,7 @@ body {
   box-sizing: border-box;
   width: 100%;
 }
-.container {
+.hero-container {
   display: flex;
   /* width: 100%; */
   /* justify-content: space-between; */
