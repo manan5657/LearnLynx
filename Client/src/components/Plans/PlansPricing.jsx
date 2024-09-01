@@ -1,8 +1,63 @@
 import React from "react";
 import "./PlanPricing.css";
+import logo from '../../assets/logo-learnlynx.png';
+import "../../../node_modules/react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "../../../node_modules/react-toastify/dist/ReactToastify.css";
 
 const PlanPricing = () => {
+
+  const checkOutHandler = async (ammount) => {
+    const verify = await axios.get("http://localhost:3000/api/verifyUser",{withCredentials:true});
+    if(verify.data.success==false){
+      toast.error('Please Login First');
+      setTimeout(() => {
+        navigate('/login');
+      }, (3000));
+    }
+    else{
+    try {
+      const {
+        data: { order },
+      } = await axios.post("http://localhost:3000/api/checkout", {
+        ammount,
+      });
+      const {
+        data: { key },
+      } = await axios.get("http://localhost:3000/api/getkey");
+
+      const options = {
+        key,
+        amount: order.amount,
+        currency: "INR",
+        name: "LearnLynx",
+        description: "Testing Razorpay",
+        image: `${logo}`,
+        order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        callback_url: `http://localhost:3000/api/teacherVerification/?auth=${verify.data.user._id}`,
+        prefill: {
+          name: `${verify.data.user.username}`,
+          email: `${verify.data.user.email}`,
+          contact: "9000090000",
+        },
+        notes: {
+          address: "Razorpay Corporate Office",
+        },
+        theme: {
+          color: "#f9c365",
+        },
+      };
+
+      var rzp1 = window.Razorpay(options);
+      rzp1.open();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+}
   return (
+    <>
     <div className="pricing-container">
       <div className="pricing-content">
         <div className="pricing-details">
@@ -32,11 +87,17 @@ const PlanPricing = () => {
               <li>Custom course branding</li>
               <li>Advanced analytics & reporting</li>
             </ul>
-            <button className="checkout-btn">Checkout</button>
+            <button className="checkout-btn"onClick={()=>{checkOutHandler(1499)}}>Checkout</button>
           </div>
         </div>
       </div>
     </div>
+          <ToastContainer
+        position="bottom-right"
+        autoClose={3000} // Close after 3 seconds
+        hideProgressBar={false}
+      />
+      </>
   );
 };
 

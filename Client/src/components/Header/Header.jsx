@@ -86,33 +86,15 @@ function Header() {
             >
               Logout
             </Link>
-            {/* {isLoggedIn ? (
-            <Link className="link login" to="/login" onClick={handleLogout}>
-              Logout
-            </Link>
-          ) : (
-            <Link className="link signup" to="/login">
-              Login
-            </Link>
-          )} */}
           </div>
         ) : (
           <div className="authentication">
-            <Link className="link login" to="/login">
+            <Link className="link login" to="/plans">
               Teach on LearnLynx
             </Link>
             <Link className="link signup" to="/login">
               Login
             </Link>
-            {/* {isLoggedIn ? (
-            <Link className="link login" to="/login" onClick={handleLogout}>
-              Logout
-            </Link>
-          ) : (
-            <Link className="link signup" to="/login">
-              Login
-            </Link>
-          )} */}
           </div>
         )}
       </div>

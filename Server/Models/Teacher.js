@@ -12,7 +12,7 @@ const teacherSchema = mongoose.Schema({
 
 // Pre-save hook to remove duplicates
 teacherSchema.pre('save', function(next) {
-  this.students = [...new Set(this.students)]; // Ensure the array has unique values
+  this.students = [...new Set(this.students)]; 
   next();
 });
 
