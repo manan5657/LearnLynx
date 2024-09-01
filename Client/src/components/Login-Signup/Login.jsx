@@ -74,8 +74,8 @@ export default function Login() {
         },
         { withCredentials: true } // Ensure cookies are included
       );
-      const teacher=response.data.user.teacher;
-      console.log(teacher)  
+      const teacher = response.data.user.teacher;
+      console.log(teacher);
 
       if (response.data.statusCode === 400) {
         const message = response.data.message;
@@ -83,15 +83,17 @@ export default function Login() {
         toast.error(message);
       } else {
         toast.success("Welcome To LearnLynx");
-        if(teacher){
+        if (teacher) {
           window.location.href = `http://localhost:5173/admin/dashboard/`;
         }
         setLoginData({
           email: "",
           password: "",
         });
-        
 
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000); // Adjust the delay to match the autoClose time of the toast notification
       }
     } catch (error) {
       console.error(`Network error: ${error.message}`);
@@ -182,7 +184,7 @@ export default function Login() {
       </div>
       <ToastContainer
         position="bottom-right"
-        autoClose={3000} // Close after 3 seconds
+        autoClose={2000} // Close after 3 seconds
         hideProgressBar={false}
       />
     </>

@@ -1,3 +1,7 @@
+.footer {
+  background: transparent;
+}
+
 .foot {
   background-color: #202020;
   margin: 0rem 5rem 0rem 5rem;
@@ -73,11 +77,10 @@
   margin-bottom: 1rem;
 }
 
-
 /* Initial state of the footer */
 /* .footer {
   opacity: 0;
-  transform: translateY(50px);
+  transform: translateY(500px);
   transition: all 0.5s ease-in-out;
 } */
 

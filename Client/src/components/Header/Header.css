@@ -15,6 +15,7 @@ body {
   /* font-family : playfair display; */
   font-family: outfit;
   font-weight: 500;
+  padding-right: 40px;
 }
 
 nav {
@@ -29,10 +30,15 @@ nav {
   color: #1e1e1e;
   font-weight: bold;
   font-size: 1.2rem;
+  transform: translateY(6px);
+  padding-bottom: 6px;
+  transition: all 0.3s ease-in-out;
+  border-bottom: 2px solid transparent;
 }
 
 .navlink:hover {
-  color: #ad905e;
+  color: #333;
+  border-bottom: 2px solid black;
 }
 
 .image {
@@ -48,7 +54,11 @@ nav {
 .authentication {
   display: flex;
   gap: 1.5rem;
+  /* justify-items: right; */
   /* margin-right: 2rem; */
+  /* justify-self: right; */
+  transform: translateX(14rem);
+  padding-right: 4rem;
   font-size: 1.2rem;
   width: 33%;
 }
@@ -56,6 +66,7 @@ nav {
   text-decoration: none;
   font-weight: bold;
 }
+
 .signup {
   background-color: #000;
   border: 1px solid black;
