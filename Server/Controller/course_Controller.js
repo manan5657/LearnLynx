@@ -12,6 +12,7 @@ module.exports.fetchCourses = async (req, res) => {
 module.exports.createCourse = async (req, res) => {
   try {
     let course = new Courses(req.body);
+    
     await course.save();
     res.status(200).send("Course Saved Successfully");
   } catch (e) {
@@ -52,3 +53,5 @@ module.exports.deleteCourse = async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 };
+
+

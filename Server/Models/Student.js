@@ -22,6 +22,10 @@ const studentSchema=mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"User"
     },
+    gender:{
+        type:String,
+
+    },
     courses:[
         {
             type:mongoose.Schema.Types.ObjectId,

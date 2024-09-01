@@ -105,7 +105,7 @@ module.exports.logOut = (req, res) => {
   });
 };
 
-module.exports.verifyUser=(req,res)=>{
+module.exports.verifyUser=async(req,res)=>{
   const token=req.cookies.token;
   if(!token){
     res.json({
@@ -115,11 +115,23 @@ module.exports.verifyUser=(req,res)=>{
   else{
   const verify=jwt.verify(token,'MySecretKey');
   const id=verify.id;
-  req.user=verify;
+  const user=await User.findById(id);
   res.json({
     success:true,
-    id
+    user
+    
   });
 }
+}
+
+module.exports.mylearning=async(req,res)=>{
+  const token=req.cookies.token;
+  const verify=jwt.verify(token,'MySecretKey');
+  const id=verify.id;
+  const user=await User.findById(id).populate("mylearning");
+  const mylearning=user.mylearning;
+  res.json({
+    mylearning
+  })
 }
 

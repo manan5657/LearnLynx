@@ -9,6 +9,8 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
+import Mylearning from "./components/Mylearning/Mylearning.jsx";
+import Checkout from "./components/studentCheckout/Checkout.jsx";
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -19,6 +21,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Login/>} />
           <Route path="/Course/:id" element={<ViewCourse/>} />
+          <Route path="/my-learnings" element={<Mylearning/>} />
         </Route>
       </>
     )

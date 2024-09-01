@@ -12,7 +12,6 @@ export default function ViewCourse() {
   const [course, setCourse] = useState({});
   const [error, setError] = useState(null);
   const navigate=useNavigate();
-
   const checkOutHandler = async (ammount) => {
     const verify = await axios.get("http://localhost:3000/api/verifyUser",{withCredentials:true});
     if(verify.data.success==false){
@@ -23,7 +22,6 @@ export default function ViewCourse() {
     }
     else{
     try {
-
       const {
         data: { order },
       } = await axios.post("http://localhost:3000/api/checkout", {
@@ -41,10 +39,10 @@ export default function ViewCourse() {
         description: "Testing Razorpay",
         image: `${logo}`,
         order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        callback_url: "http://localhost:3000/api/paymentverification",
+        callback_url: `http://localhost:3000/api/paymentverification/${id}?auth=${verify.data.user._id}`,
         prefill: {
-          name: "Gaurav Kumar",
-          email: "gaurav.kumar@example.com",
+          name: `${verify.data.user.username}`,
+          email: `${verify.data.user.email}`,
           contact: "9000090000",
         },
         notes: {
@@ -54,8 +52,7 @@ export default function ViewCourse() {
           color: "#f9c365",
         },
       };
-      console.log(window);
-      console.log(options);
+
       var rzp1 = window.Razorpay(options);
       rzp1.open();
     } catch (err) {

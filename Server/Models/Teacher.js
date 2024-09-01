@@ -1,25 +1,19 @@
-const mongoose=require('mongoose');
+const mongoose = require('mongoose');
 
-const teacherSchema=mongoose.Schema({
-    name:{
-        type:String,
-        require:true
-    },
-    students:[
-        {
-            type:mongoose.Schema.Types.ObjectId,
-            ref:"Student"
-        }
-    ],
-    mobile:{
-        type:String,
-        require:true,
-    },
-    id:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"User"
-    },
-    
-})
+const teacherSchema = mongoose.Schema({
+  students: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      unique: true, // Ensures uniqueness within the array (supported in MongoDB 3.6+)
+    }
+  ]
+});
 
-module.exports=mongoose.model("Teacher",teacherSchema);
+// Pre-save hook to remove duplicates
+teacherSchema.pre('save', function(next) {
+  this.students = [...new Set(this.students)]; // Ensure the array has unique values
+  next();
+});
+
+module.exports = mongoose.model("Teacher", teacherSchema);

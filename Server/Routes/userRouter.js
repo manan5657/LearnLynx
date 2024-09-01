@@ -8,5 +8,6 @@ router.post("/signup", userController.signUp, greetMail);
 router.post("/login", userController.loginIn);
 router.get("/logout", userController.logOut);
 router.get("/verifyUser", userController.verifyUser);
+router.get("/mylearning",userController.mylearning)
 
 module.exports = router;

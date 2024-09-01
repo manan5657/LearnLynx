@@ -75,7 +75,7 @@ function Header() {
           <Link className="link login" to="/login">
             Teach on LearnLynx
           </Link>
-          <Link className="link login" to="/login">
+          <Link className="link login" to="/my-learnings">
             My Learnings
           </Link>
           <Link className="link login" to="/login" onClick={handleLogout}>

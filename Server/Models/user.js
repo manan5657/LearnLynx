@@ -25,7 +25,19 @@ const userSchema=new Schema({
     token:{
         type:String,
         default:null
-    }
+    },
+    courses:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"Course"
+        }
+    ],
+    mylearning:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"Course"
+        }
+    ]
 })
 
 

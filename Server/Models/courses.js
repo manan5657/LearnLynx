@@ -21,8 +21,14 @@ const courseSchema= new Schema({
     },
     owner:{
         type:Schema.Types.ObjectId,
-        ref:"Teacher"
-    }
+        ref:"User"
+    },
+    students:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"User"
+        }
+    ],
 })
 
 module.exports=mongoose.model("Course",courseSchema);

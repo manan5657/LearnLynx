@@ -5,7 +5,7 @@ const router=express.Router();
 
 router.route('/checkout').post(paymentController.checkOut);
 
-router.route('/paymentverification').post(paymentController.paymentVerification)
+router.route('/paymentverification/:id').post(paymentController.paymentVerification)
 
 module.exports=router;
 
