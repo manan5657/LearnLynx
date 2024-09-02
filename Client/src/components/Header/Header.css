@@ -1,6 +1,6 @@
 body {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 .header {
@@ -12,17 +12,15 @@ body {
   width: 100%;
   height: 80px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  /* font-family : playfair display; */
-  font-family: outfit;
+  font-family: outfit, sans-serif;
   font-weight: 500;
-  padding-right: 40px;
+  padding: 0 20px;
 }
 
 nav {
   display: flex;
-  gap: 30%;
-  margin-left: 50%;
-  width: 100%;
+  gap: 2.5rem;
+  margin-left: 2rem;
 }
 
 .navlink {
@@ -30,7 +28,6 @@ nav {
   color: #1e1e1e;
   font-weight: bold;
   font-size: 1.2rem;
-  transform: translateY(6px);
   padding-bottom: 6px;
   transition: all 0.3s ease-in-out;
   border-bottom: 2px solid transparent;
@@ -45,23 +42,20 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 10%;
 }
 
 .imageshown {
-  height: 70px !important;
+  height: 70px;
 }
+
 .authentication {
   display: flex;
   gap: 1.5rem;
-  /* justify-items: right; */
-  /* margin-right: 2rem; */
-  /* justify-self: right; */
-  transform: translateX(14rem);
-  padding-right: 4rem;
   font-size: 1.2rem;
-  width: 33%;
+  padding-right: 20px;
+  margin-right: 2rem;
 }
+
 .link {
   text-decoration: none;
   font-weight: bold;
@@ -74,7 +68,49 @@ nav {
   border-radius: 15px;
   color: #f9c365;
 }
+
 .login {
   padding: 5px 10px;
   color: #000;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    height: auto;
+    padding: 10px 20px;
+  }
+
+  nav {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+
+  .image {
+    margin-bottom: 10px;
+  }
+
+  .authentication {
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .navlink {
+    font-size: 1rem;
+  }
+
+  .authentication {
+    gap: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .signup,
+  .login {
+    padding: 5px 10px;
+  }
 }

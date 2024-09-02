@@ -84,7 +84,11 @@ export default function Login() {
       } else {
         toast.success("Welcome To LearnLynx");
         if (teacher) {
-          window.location.href = `http://localhost:5173/admin/dashboard/`;
+          window.location.href = `http://localhost:5174/admin/dashboard/`;
+        } else {
+          setTimeout(() => {
+            navigate("/"); // Redirect after showing toast
+          }, 1000);
         }
         setLoginData({
           email: "",
@@ -184,7 +188,7 @@ export default function Login() {
       </div>
       <ToastContainer
         position="bottom-right"
-        autoClose={2000} // Close after 3 seconds
+        autoClose={1000} // Close after 3 seconds
         hideProgressBar={false}
       />
     </>
