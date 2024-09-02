@@ -9,9 +9,6 @@ interface DataType {
   avatar: ReactElement;
   name: string;
   email: string;
-  gender: string;
-  role: string;
-  action: ReactElement;
 }
 
 const columns: Column<DataType>[] = [
@@ -24,20 +21,8 @@ const columns: Column<DataType>[] = [
     accessor: "name",
   },
   {
-    Header: "Gender",
-    accessor: "gender",
-  },
-  {
     Header: "Email",
     accessor: "email",
-  },
-  {
-    Header: "Role",
-    accessor: "role",
-  },
-  {
-    Header: "Action",
-    accessor: "action",
   },
 ];
 const img = "https://randomuser.me/api/portraits/women/54.jpg";
@@ -56,13 +41,6 @@ const arr: DataType[] = [
     ),
     name: "Emily Palmer",
     email: "emily.palmer@example.com",
-    gender: "female",
-    role: "user",
-    action: (
-      <button>
-        <FaTrash />
-      </button>
-    ),
   },
 
   {
@@ -77,13 +55,6 @@ const arr: DataType[] = [
     ),
     name: "May Scoot",
     email: "aunt.may@example.com",
-    gender: "female",
-    role: "user",
-    action: (
-      <button>
-        <FaTrash />
-      </button>
-    ),
   },
 ];
 

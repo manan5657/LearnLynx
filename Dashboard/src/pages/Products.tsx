@@ -10,7 +10,7 @@ interface DataType {
   photo: ReactElement;
   name: string;
   price: number;
-  stock: number;
+  discounted_Price: number;
   action: ReactElement;
 }
 
@@ -24,12 +24,12 @@ const columns: Column<DataType>[] = [
     accessor: "name",
   },
   {
-    Header: "Price",
-    accessor: "price",
+    Header: "Discounted Price",
+    accessor: "discounted_Price",
   },
   {
-    Header: "Stock",
-    accessor: "stock",
+    Header: "Price",
+    accessor: "price",
   },
   {
     Header: "Action",
@@ -47,61 +47,58 @@ const arr: DataType[] = [
     photo: <img src={img} alt="Shoes" />,
     name: "Puma Shoes Air Jordan Cook Nigga 2023",
     price: 690,
-    stock: 3,
+    discounted_Price: 620, // Adjusted discounted price
     action: <Link to="/admin/product/sajknaskd">Manage</Link>,
   },
-
   {
     photo: <img src={img2} alt="Shoes" />,
     name: "Macbook",
     price: 232223,
-    stock: 213,
+    discounted_Price: 210000, // Adjusted discounted price
     action: <Link to="/admin/product/sdaskdnkasjdn">Manage</Link>,
   },
   {
     photo: <img src={img} alt="Shoes" />,
     name: "Puma Shoes Air Jordan Cook Nigga 2023",
     price: 690,
-    stock: 3,
+    discounted_Price: 620, // Adjusted discounted price
     action: <Link to="/admin/product/sajknaskd">Manage</Link>,
   },
-
   {
     photo: <img src={img2} alt="Shoes" />,
     name: "Macbook",
     price: 232223,
-    stock: 213,
+    discounted_Price: 210000, // Adjusted discounted price
     action: <Link to="/admin/product/sdaskdnkasjdn">Manage</Link>,
   },
   {
     photo: <img src={img} alt="Shoes" />,
     name: "Puma Shoes Air Jordan Cook Nigga 2023",
     price: 690,
-    stock: 3,
+    discounted_Price: 620, // Adjusted discounted price
     action: <Link to="/admin/product/sajknaskd">Manage</Link>,
   },
-
   {
     photo: <img src={img2} alt="Shoes" />,
     name: "Macbook",
     price: 232223,
-    stock: 213,
+    discounted_Price: 210000, // Adjusted discounted price
     action: <Link to="/admin/product/sdaskdnkasjdn">Manage</Link>,
   },
   {
     photo: <img src={img2} alt="Shoes" />,
     name: "Macbook",
     price: 232223,
-    stock: 213,
+    discounted_Price: 210000, // Adjusted discounted price
     action: <Link to="/admin/product/sdaskdnkasjdn">Manage</Link>,
   },
 ];
 
 const Products = () => {
   const location = useLocation();
-  
-  const queryParams=new URLSearchParams(location.search);
-  const auth=queryParams.get('auth');
+
+  const queryParams = new URLSearchParams(location.search);
+  const auth = queryParams.get("auth");
   const [data] = useState<DataType[]>(arr);
 
   const Table = useCallback(
@@ -113,7 +110,10 @@ const Products = () => {
     <div className="admin-container">
       <AdminSidebar />
       <main>{Table()}</main>
-      <Link to={`/admin/product/new?auth=${auth}`} className="create-product-btn">
+      <Link
+        to={`/admin/product/new?auth=${auth}`}
+        className="create-product-btn"
+      >
         <FaPlus />
       </Link>
     </div>
