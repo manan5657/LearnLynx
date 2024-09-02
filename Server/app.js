@@ -19,8 +19,20 @@ const MongoUrl = process.env.MONGOURL;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());  
 app.use(cookieParser());
-app.use(cors({origin:'http://localhost:3001',credentials:true}));
-//Connecting Database
+const allowedOrigins = ['http://localhost:3001', 'http://localhost:3002'];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin, like mobile apps or curl requests
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 mongoose
   .connect(MongoUrl)
   .then(() => console.log("Connected to online Database"))

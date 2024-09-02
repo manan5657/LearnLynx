@@ -1,7 +1,9 @@
+const { query } = require("express");
 const Courses = require("../Models/courses");
+const User=require('../Models/user');
 module.exports.fetchCourses = async (req, res) => {
   try {
-    const courses = await Courses.find();
+    const courses = await Courses.find().populate("owner");
     res.json(courses);
   } catch (e) {
     console.log("Error ", e);
@@ -11,8 +13,12 @@ module.exports.fetchCourses = async (req, res) => {
 
 module.exports.createCourse = async (req, res) => {
   try {
+    const{auth}=req.query;
     let course = new Courses(req.body);
-    
+    const user=await User.findById(auth);
+    course.owner=auth;
+    user.courses.push(course._id);
+    await user.save();
     await course.save();
     res.status(200).send("Course Saved Successfully");
   } catch (e) {

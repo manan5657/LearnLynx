@@ -75,7 +75,7 @@ export default function Login() {
         { withCredentials: true } // Ensure cookies are included
       );
       const teacher = response.data.user.teacher;
-      console.log(teacher);
+      
 
       if (response.data.statusCode === 400) {
         const message = response.data.message;
@@ -84,7 +84,7 @@ export default function Login() {
       } else {
         toast.success("Welcome To LearnLynx");
         if (teacher) {
-          window.location.href = `http://localhost:5174/admin/dashboard/`;
+          window.location.href = `http://localhost:3002/admin/dashboard?auth=${response.data.user._id}`;
         } else {
           setTimeout(() => {
             navigate("/"); // Redirect after showing toast

@@ -29,6 +29,7 @@ const App = () => {
             discount_price={course.discountPrice}
             price={course.price}
             id={course._id}
+            owner={course.owner.username}
           />
         ))}
       </div>

@@ -1,6 +1,6 @@
 import "./Card.css";
 import { useNavigate } from "react-router-dom";
-const Card = ({ title, image, price, discount_price, id }) => {
+const Card = ({ title, image, price, discount_price, id ,owner}) => {
   const navigate = useNavigate();
   const handleId = () => {
     window.scrollTo(0,0)
@@ -15,7 +15,7 @@ const Card = ({ title, image, price, discount_price, id }) => {
       <h3>{title}</h3>
       <div className="course-info-card">
         <div className="course-meta">
-          <span>By: Love</span>
+          <span>By: {owner} </span>
         </div>
         <div className="price">
           <span className="price1"> ₹ {price}</span>
