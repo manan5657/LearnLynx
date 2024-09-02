@@ -20,6 +20,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Landingpage />} />
           <Route path="/all-courses" element={<Courses />} />
+          <Route path="/all-courses" element={<Courses />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Login />} />
           <Route path="/Course/:id" element={<ViewCourse />} />

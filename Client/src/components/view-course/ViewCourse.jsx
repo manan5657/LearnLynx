@@ -1,32 +1,37 @@
 import "./ViewCourse.css";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from 'axios';
-import logo from '../../assets/logo-learnlynx.png';
+import axios from "axios";
+import logo from "../../assets/logo-learnlynx.png";
 import { toast, ToastContainer } from "react-toastify";
 import "../../../node_modules/react-toastify/dist/ReactToastify.css";
-
 
 export default function ViewCourse() {
   const { id } = useParams();
   const [course, setCourse] = useState({});
   const [error, setError] = useState(null);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
+
   const checkOutHandler = async (ammount) => {
-    const verify = await axios.get("http://localhost:3000/api/verifyUser",{withCredentials:true});
-    if(verify.data.success==false){
-      toast.error('Please Login First');
-      setTimeout(() => {
-        navigate('/login');
-      }, (3000));
-    }
-    else{
     try {
+      const verify = await axios.get("http://localhost:3000/api/verifyUser", {
+        withCredentials: true,
+      });
+
+      if (!verify.data.success) {
+        toast.error("Please Login First");
+        setTimeout(() => {
+          navigate("/login");
+        }, 3000);
+        return;
+      }
+
       const {
         data: { order },
       } = await axios.post("http://localhost:3000/api/checkout", {
         ammount,
       });
+
       const {
         data: { key },
       } = await axios.get("http://localhost:3000/api/getkey");
@@ -37,12 +42,30 @@ export default function ViewCourse() {
         currency: "INR",
         name: "LearnLynx",
         description: "Testing Razorpay",
-        image: `${logo}`,
-        order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        callback_url: `http://localhost:3000/api/paymentverification/${id}?auth=${verify.data.user._id}`,
+        image: logo,
+        order_id: order.id,
+        handler: async function (response) {
+          try {
+            const savePaymentData = await axios.post(
+              `http://localhost:3000/api/paymentverification/${id}?auth=${verify.data.user._id}`,
+              response,
+              {
+                withCredentials: true,
+              }
+            );
+
+            if (savePaymentData.data.success) {
+              navigate("/my-learnings");
+            } else {
+              toast.error("Payment Verification Failed!");
+            }
+          } catch (error) {
+            toast.error("Error in Payment Verification!");
+          }
+        },
         prefill: {
-          name: `${verify.data.user.username}`,
-          email: `${verify.data.user.email}`,
+          name: verify.data.user.username,
+          email: verify.data.user.email,
           contact: "9000090000",
         },
         notes: {
@@ -53,13 +76,13 @@ export default function ViewCourse() {
         },
       };
 
-      var rzp1 = window.Razorpay(options);
+      const rzp1 = new window.Razorpay(options);
       rzp1.open();
     } catch (err) {
-      console.log(err);
+      console.error("Error during checkout:", err);
+      toast.error("An error occurred during checkout.");
     }
   };
-}
 
   useEffect(() => {
     fetch(`/api/admin/course/${id}`)
@@ -72,7 +95,6 @@ export default function ViewCourse() {
       .then((data) => setCourse(data))
       .catch((error) => setError(error.message));
   }, [id]);
-  
 
   return (
     <>
@@ -93,7 +115,12 @@ export default function ViewCourse() {
               <p className="course-price discount-price">
                 ₹ {course.discountPrice}
               </p>
-              <button className="enroll-btn" onClick={()=>{checkOutHandler(course.discountPrice)}}>Enroll Now!</button>
+              <button
+                className="enroll-btn"
+                onClick={() => checkOutHandler(course.discountPrice)}
+              >
+                Enroll Now!
+              </button>
             </div>
           </div>
         </div>
@@ -140,7 +167,7 @@ export default function ViewCourse() {
       </div>
       <ToastContainer
         position="bottom-right"
-        autoClose={3000} // Close after 3 seconds
+        autoClose={3000}
         hideProgressBar={false}
       />
     </>

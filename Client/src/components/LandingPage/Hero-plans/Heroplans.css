@@ -5,7 +5,7 @@
 .page4-potential {
   font-size: 4rem;
   font-weight: 600;
-  transform: translateY(4.5rem);
+  transform: translateY(4.5rem) translateX(-3rem);
   font-family: "Outfit";
   margin: 0rem 0rem 0rem 6rem;
 }
@@ -16,7 +16,7 @@
 }
 
 .page4-left {
-  transform: translateY(8rem);
+  transform: translateY(8rem) translateX(-3rem);
 }
 .page4-learnlynx {
   background-color: #f9c365;
