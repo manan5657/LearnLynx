@@ -24,7 +24,7 @@ module.exports.checkOut = async (req, res) => {
     order,
   });
 };
-module.exports.paymentVerification = async (req, res) => {
+module.exports.paymentVerification = async (req, res,next) => {
   const { razorpay_payment_id, razorpay_order_id, razorpay_signature } =
     req.body;
     const {auth}=req.query;
@@ -44,6 +44,7 @@ module.exports.paymentVerification = async (req, res) => {
       success: true,
       user
     });
+    next();
   } else {
     res.json({
       success: false,
@@ -51,31 +52,9 @@ module.exports.paymentVerification = async (req, res) => {
   }
 };
 
-// module.exports.inspaymentverification=async (req, res) => {
-  
-//   const { razorpay_payment_id, razorpay_order_id, razorpay_signature } =
-//     req.body;
-//     const {auth}=req.query;
-//     console.log(auth);
-//     const generated_signature = crypto
-//     .createHmac("sha256", process.env.RAZORPAY_API_SECRET)
-//     .update(razorpay_order_id + "|" + razorpay_payment_id)
-//     .digest("hex");
-//   if (generated_signature == razorpay_signature) {
-//     // const user=await User.findById(auth);
-//     // user.teacher=true;
-//     // await user.save();
-//     res.status(200).json({
-//       success: true,
-//     });
-//   } else {
-//     res.json({
-//       success: false,
-//     });
-//   }
-// };
 
-module.exports.inspaymentVerification = async (req, res) => {
+
+module.exports.inspaymentVerification = async (req, res,next) => {
   try {
     const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = req.body;
     const { auth } = req.query;
@@ -101,7 +80,7 @@ module.exports.inspaymentVerification = async (req, res) => {
 
       user.teacher = true;
       await user.save();
-
+      next();
       res.status(200).json({
         success: true,
       });
