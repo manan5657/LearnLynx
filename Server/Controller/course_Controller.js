@@ -61,3 +61,13 @@ module.exports.deleteCourse = async (req, res) => {
 };
 
 
+module.exports.dashCourses=async(req,res)=>{
+  try{
+  const {auth}=req.query;
+  const course=await Courses.find({owner:auth});
+  res.json(course)
+  }
+  catch(err){
+    res.json(err);
+  }
+}

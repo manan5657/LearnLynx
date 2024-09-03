@@ -8,8 +8,8 @@ const courseRouter = require("./Routes/course_router");
 const userRouter=require('./Routes/userRouter');
 const paymentRouter=require('./Routes/paymentRouter');
 const cors=require('cors');
-const session=require('express-session');
-const jwt = require('jsonwebtoken');
+const methodOverride=require('method-override');
+
 
 const cookieParser = require('cookie-parser');
 
@@ -19,6 +19,7 @@ const MongoUrl = process.env.MONGOURL;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());  
 app.use(cookieParser());
+app.use(methodOverride('_method'))
 const allowedOrigins = ['http://localhost:3001', 'http://localhost:3002'];
 
 app.use(cors({

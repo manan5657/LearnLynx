@@ -32,13 +32,12 @@ const columns: Column<DataType>[] = [
   },
 ];
 
-const DashboardTable = ({ data = [] }: { data: DataType[] }) => {
-  return TableHOC<DataType>(
-    columns,
-    data,
-    "transaction-box",
-    "Top Instructors"
-  )();
+const DashboardTable = ({ data }: { data: DataType[] }) => {
+  // Create a table component using TableHOC
+  const TableComponent = TableHOC<DataType>(columns, data, "transaction-box", "Top Instructors");
+
+  // Render the TableComponent
+  return <TableComponent />;
 };
 
 export default DashboardTable;
