@@ -47,6 +47,9 @@ const App = () => {
           // Check if the current user is enrolled in the course
           const isEnrolled = userId && course.students.includes(userId);
 
+          // Check if the current user is the owner of the course
+          const teachercourse = userId === course.owner._id;
+
           return (
             <CourseCard
               key={course._id}
@@ -57,6 +60,7 @@ const App = () => {
               id={course._id}
               owner={course.owner.username}
               isEnrolled={isEnrolled} // Pass isEnrolled prop to CourseCard
+              teachercourse={teachercourse} // Pass teachercourse prop to CourseCard
             />
           );
         })}

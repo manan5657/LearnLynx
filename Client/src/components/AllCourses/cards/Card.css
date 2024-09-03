@@ -9,16 +9,27 @@
   margin-top: 2rem;
   width: 300px;
   height: 100%;
-  font-family: "Outfit" !important;
+  font-family: "Outfit", sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.course-card > h3 {
+  font-family: "Outfit";
+  text-align: left;
 }
 
 .course-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.course-image {
+  position: relative;
 }
 
 .course-image img {
@@ -39,6 +50,8 @@
   align-items: center;
   font-size: 1rem;
   color: #555;
+  font-family: "Outfit", sans-serif;
+  margin-top: 0.5rem;
 }
 
 .price {
@@ -74,10 +87,10 @@
   background-color: #f9c365;
 }
 
-/* Locked Course Card (Enrolled) */
-.enrolled-card {
-  background-color: #f0f0f0;
-  box-shadow: none;
+.enrolled-card .view-courses,
+.teacher-course-card .view-courses {
+  background-color: #696969;
+  cursor: default;
 }
 
 .locked-overlay {
@@ -87,28 +100,53 @@
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  text-shadow: 0px 3px 6px #3d3d3d42;
   display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  font-weight: bold;
+  align-items: center;
+  color: #fff;
   border-radius: 10px;
+  font-size: 1.5rem;
 }
 
-.locked-button {
-  background-color: #555;
-  cursor: default;
+.teacher-course-card .teacher-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(249, 195, 101, 0.95); /* Light orange overlay */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  color: #fff;
+  text-shadow: 0px 3px 6px #3737375f;
+  font-size: 1.2rem;
+  text-align: center;
+  font-family: "Outfit", sans-serif;
+  animation: overlayAnimation 1.5s ease-in-out infinite alternate;
 }
 
-.locked-button:hover {
-  background-color: #555;
+.teacher-overlay span {
+  font-size: 3rem; /* Larger emoji size */
 }
 
-.locked-card:hover {
-  transform: none;
-  box-shadow: none;
+.teacher-overlay p {
+  margin-top: 1rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+@keyframes overlayAnimation {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
 }
 
 /* @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap");

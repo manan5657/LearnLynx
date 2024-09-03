@@ -5,7 +5,7 @@ import axios from "axios";
 
 const ProductManagement = () => {
   const { id } = useParams<{ id: string }>();
-  
+
   const [name, setName] = useState<string>("");
   const [price, setPrice] = useState<number>(0);
   const [discountedPrice, setDiscountedPrice] = useState<number>(0);
@@ -19,7 +19,9 @@ const ProductManagement = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/admin/course/${id}`);
+        const response = await axios.get(
+          `http://localhost:3000/api/admin/course/${id}`
+        );
         const product = response.data;
         console.log(product);
 
@@ -46,12 +48,15 @@ const ProductManagement = () => {
     e.preventDefault();
 
     try {
-      await axios.post(`http://localhost:3000/api/admin/course/${id}/edit/?_method=PATCH`, {
-        title: nameUpdate,
-        price: priceUpdate,
-        discountPrice: discountedPriceUpdate,
-        img: photoUpdate
-      });
+      await axios.post(
+        `http://localhost:3000/api/admin/course/${id}/edit/?_method=PATCH`,
+        {
+          title: nameUpdate,
+          price: priceUpdate,
+          discountPrice: discountedPriceUpdate,
+          img: photoUpdate,
+        }
+      );
       // Optionally refresh the data or show success message
     } catch (error) {
       console.error("Failed to update product", error);
@@ -113,7 +118,9 @@ const ProductManagement = () => {
                 type="number"
                 placeholder="Discounted Price"
                 value={discountedPriceUpdate}
-                onChange={(e) => setDiscountedPriceUpdate(Number(e.target.value))}
+                onChange={(e) =>
+                  setDiscountedPriceUpdate(Number(e.target.value))
+                }
               />
             </div>
             <div>
@@ -130,7 +137,11 @@ const ProductManagement = () => {
             {photoUpdate && <img src={photoUpdate} alt="New Image" />}
 
             <button type="submit">Update</button>
-            <button type="button" onClick={deleteHandler}>
+            <button
+              type="button"
+              className="delete-btn"
+              onClick={deleteHandler}
+            >
               Delete Product
             </button>
           </form>

@@ -9,23 +9,38 @@ const Card = ({
   id,
   owner,
   isEnrolled,
+  teachercourse,
 }) => {
   const navigate = useNavigate();
 
   const handleId = () => {
-    if (!isEnrolled) {
+    if (!isEnrolled && !teachercourse) {
       window.scrollTo(0, 0);
       navigate(`/Course/${id}`);
     }
   };
 
   return (
-    <div className={`course-card ${isEnrolled ? "enrolled-card" : ""}`}>
+    <div
+      className={`course-card ${isEnrolled ? "enrolled-card" : ""} ${
+        teachercourse ? "teacher-course-card" : ""
+      }`}
+      onClick={handleId}
+      style={teachercourse ? { pointerEvents: "none" } : {}}
+    >
       <div className="course-image">
         <img src={image} alt={`${title} Course`} />
         {isEnrolled && (
           <div className="locked-overlay">
             <span>Enrolled</span>
+          </div>
+        )}
+        {teachercourse && (
+          <div className="teacher-overlay">
+            <span role="img" aria-label="folded hands emoji">
+              🙏😅
+            </span>
+            <p>Paaji Tuhwada hi course ae</p>
           </div>
         )}
       </div>
@@ -39,8 +54,9 @@ const Card = ({
           <span>₹ {discount_price}</span>
         </div>
         <button
-          className={`view-courses ${isEnrolled ? "locked-button" : ""}`}
-          onClick={handleId}
+          className={`view-courses ${
+            isEnrolled || teachercourse ? "locked-button" : ""
+          }`}
         >
           {isEnrolled ? "Access Course" : "View Course"}
         </button>
