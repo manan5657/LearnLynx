@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const User = require('../Models/user');
 const jwt = require('jsonwebtoken');
 const ExpressError = require('../utils/ExpressError');
+const Teacher = require('../Models/Teacher');
 
 
 module.exports.signUp = async (req, res,next) => {
@@ -135,3 +136,14 @@ module.exports.mylearning=async(req,res)=>{
   })
 }
 
+module.exports.myStudent=async(req,res)=>{
+  try{
+    const {auth}=req.query;
+    const teacher=await Teacher.findOne({id:auth}).populate("students");
+    res.json(teacher.students); 
+  }
+  catch(err){
+    res.json(err);
+
+  }
+}

@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
+
 const teacherSchema = mongoose.Schema({
+  id:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"User"
+},
   students: [
     {
       type: mongoose.Schema.Types.ObjectId,

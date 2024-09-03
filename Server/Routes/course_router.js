@@ -9,6 +9,8 @@ router.post("/create",validateCourse, courseController.createCourse);
 
 router.get("/course/:id", courseController.getCourse);
 
+router.get("/dashCourses",courseController.dashCourses)
+
 router.patch("/course/:id/edit", validateCourse,courseController.editCourse);
 
 router.delete("/course/:id/delete", courseController.deleteCourse);

@@ -36,10 +36,16 @@ module.exports.paymentVerification = async (req, res,next) => {
   if (generated_signature == razorpay_signature) {
     const user=await User.findById(auth);
     const course=await Course.findById(id);
+    const owner=course.owner
+    const teacher =await Teacher.findOne({id:owner});
+    teacher.students.push(auth);
+    console.log(teacher);
+    // console.log(teacher[0].id);
     user.mylearning.push(id);
     course.students.push(auth);
     await user.save();
     await course.save();
+    await teacher.save();
     res.status(200).json({
       success: true,
       user
@@ -70,6 +76,8 @@ module.exports.inspaymentVerification = async (req, res,next) => {
     // Signature verification
     if (generated_signature === razorpay_signature) {
       const user = await User.findById(auth);
+      const teacher=  new Teacher({id:auth});
+      teacher.save();
 
       if (!user) {
         return res.status(404).json({
